@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="INNOVATION NFC E.S.F - Áreas de Acceso (Control NFC)">
+  <meta name="theme-color" content="#FAF8F2">
+  <title>Áreas de Acceso - INNOVATION NFC E.S.F</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/styles.css">
+
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23F5D25A'/%3E%3Ctext x='16' y='22' font-family='Arial' font-size='16' font-weight='bold' text-anchor='middle' fill='%231E1E1E'%3EN%3C/text%3E%3C/svg%3E">
+</head>
+<body class="nfc-page">
+  <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
+
+  <main id="main-content" class="nfc-shell" role="main">
+    <!-- Header -->
+    <header class="nfc-header">
+      <a href="index.html" class="nfc-back" aria-label="Volver al login">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <path d="M19 12H5M12 5l-7 7 7 7"/>
+        </svg>
+        <span>Volver</span>
+      </a>
+      <div class="nfc-logo" aria-label="INNOVATION NFC E.S.F">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <rect x="2" y="4" width="20" height="16" rx="2"/>
+          <path d="M6 8h12M6 12h12M6 16h8"/>
+        </svg>
+        <span>INNOVATION NFC E.S.F.</span>
+      </div>
+    </header>
+
+    <!-- Grid de zonas -->
+    <section class="areas-grid-section" aria-labelledby="areas-title">
+      <header class="areas-header">
+        <h1 id="areas-title" class="areas-title">Áreas de Acceso</h1>
+        <p class="areas-subtitle">Selecciona una zona → Escanea tu tarjeta o usa Manual</p>
+      </header>
+
+      <div class="areas-grid" id="areasGrid" role="list">
+        <!-- Se genera por JS -->
+      </div>
+    </section>
+
+    <footer class="nfc-footer">
+      <p>Control de acceso a zonas — INNOVATION NFC E.S.F.</p>
+      <p class="nfc-footer-hint">Cada zona valida roles NFC antes de abrir</p>
+    </footer>
+  </main>
+
+  <!-- ===== MODAL: Método (Escanear NFC / Manual) ===== -->
+  <div class="nfc-modal-overlay oculto" id="modalMetodo" role="dialog" aria-modal="true" aria-labelledby="modalMetodoTitle" hidden>
+    <div class="nfc-modal-card">
+      <div class="nfc-modal-header">
+        <h3 id="modalMetodoTitle">Acceso a zona</h3>
+        <button type="button" class="nfc-modal-close" aria-label="Cancelar">✕</button>
+      </div>
+      <div class="nfc-modal-body" style="display:flex;flex-direction:column;gap:12px;">
+        <p style="color:var(--color-text-secondary);margin:0;font-size:.9rem;text-align:center;">
+          Zona: <strong id="modalMetodoZona" style="color:var(--color-text-primary);"></strong>
+        </p>
+        
+        <!-- Opción 1: Escanear NFC -->
+        <button type="button" class="nfc-metodo-btn nfc-metodo-btn--nfc" id="btnMetodoNFC">
+          <span style="font-size:2rem;">📡</span>
+          <div style="flex:1;">
+            <strong style="color:var(--color-text-primary);display:block;margin-bottom:4px;">Escanear tarjeta NFC</strong>
+            <small style="color:var(--color-text-tertiary);">Acerca tu tarjeta al lector de la zona</small>
+          </div>
+        </button>
+
+        <!-- Opción 2: Manual -->
+        <button type="button" class="nfc-metodo-btn nfc-metodo-btn--manual" id="btnMetodoManual">
+          <span style="font-size:2rem;">👤</span>
+          <div style="flex:1;">
+            <strong style="color:var(--color-text-primary);display:block;margin-bottom:4px;">Seleccionar empleado manualmente</strong>
+            <small style="color:var(--color-text-tertiary);">Elige de la lista (50 empleados, 7 reales primero)</small>
+          </div>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== SUB-MODAL: Escaneo NFC ===== -->
+  <div class="nfc-modal-overlay oculto" id="modalEscaneo" role="dialog" aria-modal="true" aria-labelledby="scanTextEscaneo" aria-live="assertive" hidden>
+    <div class="nfc-modal-card nfc-modal-card--scan" style="max-width:340px;">
+      <button type="button" class="nfc-modal-close nfc-scan-close" id="btnCerrarEscaneo" aria-label="Cerrar escaneo">✕</button>
+      <div class="nfc-modal-body" style="padding:32px 24px;text-align:center;">
+        <div class="scan-ring-large" aria-hidden="true" style="margin:0 auto 20px;"></div>
+        <p class="scan-text-large" id="scanTextEscaneo" style="margin:0 0 8px;">Escaneando tarjeta...</p>
+        <p class="scan-zona" id="scanZonaEscaneo" style="margin:0 0 20px;">Zona: —</p>
+        <button type="button" class="scan-cancel-large" id="btnCancelarEscaneo" style="width:100%;">Cancelar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== SUB-MODAL: Lista empleados (Manual - 50 empleados) ===== -->
+  <div class="nfc-modal-overlay oculto" id="modalEmpleados" role="dialog" aria-modal="true" aria-labelledby="modalEmpTitle" hidden>
+    <div class="nfc-modal-card">
+      <div class="nfc-modal-header">
+        <h3 id="modalEmpTitle">Seleccionar empleado</h3>
+        <button type="button" class="nfc-modal-close" aria-label="Cancelar">✕</button>
+      </div>
+      <div class="nfc-modal-body nfc-modal-body--lista" id="modalEmpBody" style="padding:20px;"></div>
+    </div>
+  </div>
+
+  <script src="js/nfc-reader.js" defer></script>
+  <script>
+    let zonaActual = null;
+
+    document.addEventListener('DOMContentLoaded', async () => {
+      if (!window.NFCReader) return;
+
+      await window.NFCReader.init();
+      renderZonas();
+
+      // Botones del modal método
+      document.getElementById('btnMetodoNFC').addEventListener('click', () => iniciarEscaneoZona());
+      document.getElementById('btnMetodoManual').addEventListener('click', () => abrirModalEmpleadosZona());
+
+      // Cerrar modales (la X del escaneo vuelve al menú, no cierra todo)
+      document.querySelectorAll('.nfc-modal-close').forEach(btn => {
+        if (btn.classList.contains('nfc-scan-close')) return;
+        btn.addEventListener('click', cerrarTodosModales);
+      });
+      document.getElementById('btnCerrarEscaneo').addEventListener('click', volverAlMetodoZona);
+      document.querySelectorAll('.nfc-modal-overlay').forEach(overlay => {
+        overlay.addEventListener('click', (e) => {
+          if (e.target !== overlay) return;
+          if (overlay.id === 'modalEscaneo') volverAlMetodoZona();
+          else cerrarTodosModales();
+        });
+      });
+
+      // Cancelar / Volver desde el escaneo
+      document.getElementById('btnCancelarEscaneo').addEventListener('click', volverAlMetodoZona);
+
+      // ESC cierra todo
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+          window.NFCReader.cancelarEscaneo();
+          cerrarTodosModales();
+        }
+      });
+    });
+
+    function renderZonas() {
+      const grid = document.getElementById('areasGrid');
+      if (!grid) return;
+
+      const zonas = window.NFCReader.getZonas();
+
+      grid.innerHTML = zonas.map(zona => `
+        <article class="area-card" role="listitem" data-zona="${zona.id}">
+          <div class="area-icon" aria-hidden="true">${zona.icono}</div>
+          <h3 class="area-name">${zona.nombre}</h3>
+          <p class="area-desc">${zona.descripcion}</p>
+          <div class="area-roles">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            <span>Click para acceder</span>
+          </div>
+          <button type="button" class="area-btn" data-zona="${zona.id}" aria-label="Acceder a ${zona.nombre}">
+            Acceder
+          </button>
+        </article>
+      `).join('');
+
+      // Bind botones
+      grid.querySelectorAll('.area-btn').forEach(btn => {
+        btn.addEventListener('click', () => abrirModalMetodoZona(btn.dataset.zona));
+      });
+    }
+
+    function abrirModalMetodoZona(zonaId) {
+      zonaActual = zonaId;
+      const zona = window.NFCReader.getZonas().find(z => z.id === zonaId);
+      if (!zona) return;
+
+      document.getElementById('modalMetodoZona').textContent = `${zona.icono} ${zona.nombre}`;
+      
+      const modal = document.getElementById('modalMetodo');
+      modal.classList.remove('oculto');
+      modal.hidden = false;
+      requestAnimationFrame(() => modal.classList.add('show'));
+    }
+
+    async function iniciarEscaneoZona() {
+      cerrarModalMetodo();
+      const zona = window.NFCReader.getZonas().find(z => z.id === zonaActual);
+
+      const modal = document.getElementById('modalEscaneo');
+      const texto = document.getElementById('scanTextEscaneo');
+      texto.textContent = 'Escaneando tarjeta...';
+      texto.style.color = '';
+      document.getElementById('scanZonaEscaneo').textContent = `Zona: ${zona?.nombre || zonaActual || '—'}`;
+
+      modal.classList.remove('oculto');
+      modal.hidden = false;
+      requestAnimationFrame(() => modal.classList.add('show'));
+
+      try {
+        const resultado = await window.NFCReader.escanearTarjeta({
+          onStart: () => {
+            texto.textContent = 'Escaneando tarjeta...';
+            texto.style.color = '';
+          }
+        });
+
+        if (resultado.error === 'CANCELADO') {
+          // Si la cancelación no vino del botón Volver, no dejar el modal colgado.
+          if (document.getElementById('modalMetodo').hidden) cerrarModalEscaneo();
+          return;
+        }
+
+        if (resultado.error || !resultado.empleado) {
+          // El error se queda en el modal; el usuario decide volver o usar manual.
+          mostrarErrorEscaneoZona(mensajeErrorEscaneo(resultado));
+          return;
+        }
+
+        // Validar acceso a zona con la lógica centralizada.
+        if (!window.NFCReader.tieneAcceso(resultado.empleado, zona)) {
+          mostrarErrorEscaneoZona(`Acceso denegado: ${resultado.empleado.nombre} no tiene permiso para ${zona?.nombre || zonaActual}.`);
+          return;
+        }
+
+        cerrarModalEscaneo();
+        await procesarAccesoConEmpleado(zonaActual, resultado.empleado);
+
+      } catch (err) {
+        console.error('[Áreas] Error escaneo:', err);
+        mostrarErrorEscaneoZona('Error inesperado: ' + err.message);
+      }
+    }
+
+    function mensajeErrorEscaneo(resultado) {
+      switch (resultado.error) {
+        case 'NFC_NO_SOPORTADO':
+          return 'Este dispositivo no tiene lector NFC. Usa "Seleccionar empleado manualmente".';
+        case 'PERMISO_DENEGADO':
+        case 'NFC_PERMISO_DENEGADO':
+          return 'Permiso NFC denegado. Usa "Seleccionar empleado manualmente".';
+        case 'TIMEOUT':
+        case 'NFC_TIMEOUT':
+          return 'Tiempo agotado. No se detectó ninguna tarjeta.';
+        case 'TARJETA_NO_REGISTRADA':
+          return `Tarjeta no registrada (UID: ${resultado.uid || '—'}). Usa "Seleccionar empleado manualmente".`;
+        case 'NFC_SIN_TEXTO':
+        case 'NFC_ERROR_LECTURA':
+          return 'No se pudo leer la tarjeta. Intenta de nuevo o usa "Seleccionar empleado manualmente".';
+        default:
+          return 'No se pudo leer la tarjeta. Usa "Seleccionar empleado manualmente".';
+      }
+    }
+
+    function mostrarErrorEscaneoZona(mensaje) {
+      const texto = document.getElementById('scanTextEscaneo');
+      texto.textContent = mensaje;
+      texto.style.color = '#D97757';
+      document.getElementById('btnCancelarEscaneo').textContent = 'Volver al menú';
+    }
+
+    function abrirModalEmpleadosZona() {
+      cerrarModalMetodo();
+      cerrarModalEscaneo();
+
+      const empleados = window.NFCReader.getEmpleadosOrdenados();
+      const zona = window.NFCReader.getZonas().find(z => z.id === zonaActual);
+      const modal = document.getElementById('modalEmpleados');
+      const body = document.getElementById('modalEmpBody');
+
+      // Comedor y Salas Comunes permiten a todos; el resto valida rolNFC.
+      const esZonaComun = zona?.rolesPermitidos?.includes('todos');
+
+      body.innerHTML = `
+        <p style="color:var(--color-text-secondary);margin:0 0 16px;font-size:.9rem;text-align:center;">
+          Zona: <strong style="color:var(--color-text-primary);">${zona?.icono || ''} ${zona?.nombre || zonaActual}</strong><br>
+          Empleados: ${empleados.length} (7 reales primero). ${esZonaComun ? 'Todos tienen acceso.' : 'Sin acceso = click muestra denegado.'}
+        </p>
+        <div class="nfc-empleados-lista">
+          ${empleados.map(emp => {
+            const numero = parseInt(String(emp.id).replace(/\D/g, ''), 10);
+            const grupo = emp.esReal ? 'Real' : (numero <= 20 ? 'Equipo' : 'Simulado');
+            const icono = emp.esReal ? '✅' : (numero <= 20 ? '👥' : '🤖');
+            const tieneAcceso = window.NFCReader.tieneAcceso(emp, zona);
+            return `
+              <button type="button" class="nfc-emp-btn" data-id="${emp.id}">
+                <span style="font-size:1.5rem;">${icono}</span>
+                <div style="flex:1;">
+                  <strong style="color:var(--color-text-primary);">${emp.nombre}</strong><br>
+                  <small style="color:var(--color-text-tertiary);">${emp.area} · ${emp.rolNFC || emp.rol} · ${grupo}${!tieneAcceso ? ' · Sin acceso' : ''}</small>
+                </div>
+              </button>
+            `;
+          }).join('')}
+        </div>
+      `;
+
+      modal.classList.remove('oculto');
+      modal.hidden = false;
+      requestAnimationFrame(() => modal.classList.add('show'));
+
+      body.querySelectorAll('.nfc-emp-btn').forEach(btn => {
+        btn.onclick = () => {
+          const emp = empleados.find(e => e.id === btn.dataset.id);
+
+          if (!window.NFCReader.tieneAcceso(emp, zona)) {
+            // Mostrar denegado sin cerrar la lista.
+            mostrarToast(`⛔ Acceso denegado: ${emp.nombre} no tiene permiso para ${zona?.nombre || zonaActual}`, 'error', 4000);
+            return;
+          }
+
+          cerrarModalEmpleados();
+          procesarAccesoConEmpleado(zonaActual, emp);
+        };
+      });
+    }
+
+    async function procesarAccesoConEmpleado(zonaId, empleado) {
+      try {
+        const registro = await window.NFCReader.registrarAccesoZona(zonaId, empleado.uidNFC);
+        const zonas = window.NFCReader.getZonas();
+        const zona = zonas.find(z => z.id === zonaId);
+        mostrarToast(`✅ Acceso a ${zona.nombre} — ${empleado.nombre} (${registro.duracionMin} min)`, 'success');
+
+        // Animación en tarjeta
+        const card = document.querySelector(`.area-card[data-zona="${zonaId}"]`);
+        if (card) {
+          card.style.boxShadow = '0 0 0 3px #8FBF8F';
+          setTimeout(() => { card.style.boxShadow = ''; }, 1000);
+        }
+      } catch (err) {
+        mostrarToast(err.message, 'error');
+      }
+    }
+
+    function volverAlMetodoZona() {
+      window.NFCReader.cancelarEscaneo();
+      cerrarModalEscaneo();
+      if (zonaActual) {
+        abrirModalMetodoZona(zonaActual);
+      }
+    }
+
+    function cerrarModalMetodo() {
+      const modal = document.getElementById('modalMetodo');
+      modal.classList.remove('show');
+      modal.hidden = true;
+      modal.classList.add('oculto');
+    }
+
+    function cerrarModalEscaneo() {
+      const modal = document.getElementById('modalEscaneo');
+      modal.classList.remove('show');
+      modal.hidden = true;
+      modal.classList.add('oculto');
+      // Reset modal
+      document.getElementById('btnCancelarEscaneo').textContent = 'Cancelar';
+      const texto = document.getElementById('scanTextEscaneo');
+      texto.textContent = 'Escaneando tarjeta...';
+      texto.style.color = '';
+    }
+
+    function cerrarModalEmpleados() {
+      const modal = document.getElementById('modalEmpleados');
+      modal.classList.remove('show');
+      modal.hidden = true;
+      modal.classList.add('oculto');
+    }
+
+    function cerrarTodosModales() {
+      window.NFCReader.cancelarEscaneo();
+      cerrarModalMetodo();
+      cerrarModalEscaneo();
+      cerrarModalEmpleados();
+    }
+
+    function mostrarToast(mensaje, tipo = 'info', duracion = 3000) {
+      const colors = { success: '#8FBF8F', warning: '#F5D25A', error: '#D97757', info: '#1E1E1E' };
+      let container = document.getElementById('toast-container');
+      if (!container) {
+        container = document.createElement('div');
+        container.id = 'toast-container';
+        container.style.cssText = 'position:fixed;top:1rem;right:1rem;z-index:9999;display:flex;flex-direction:column;gap:.5rem;pointer-events:none;';
+        document.body.appendChild(container);
+      }
+      const item = document.createElement('div');
+      item.textContent = mensaje;
+      item.style.cssText = `background:${colors[tipo] || colors.info};color:${tipo === 'warning' ? '#1E1E1E' : '#FFFFFF'};padding:.8rem 1.1rem;border-radius:999px;box-shadow:0 16px 34px rgba(30,30,30,.18);font-size:.8rem;font-weight:500;pointer-events:auto;animation:slideIn .3s ease;`;
+      container.appendChild(item);
+      setTimeout(() => { item.style.animation = 'slideOut .3s ease forwards'; setTimeout(() => item.remove(), 300); }, duracion);
+      if (!document.getElementById('toast-styles')) {
+        const style = document.createElement('style');
+        style.id = 'toast-styles';
+        style.textContent = `@keyframes slideIn {from{opacity:0;transform:translateX(20px)}to{opacity:1;transform:translateX(0)}}@keyframes slideOut {from{opacity:1;transform:translateX(0)}to{opacity:0;transform:translateX(20px)}}`;
+        document.head.appendChild(style);
+      }
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="INNOVATION NFC E.S.F - Sistema de Control de Personal">
+  <meta name="theme-color" content="#FAF8F2">
+  <title>INNOVATION NFC E.S.F — Iniciar Sesión</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/styles.css?v=20261102-login">
+
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23F5D25A'/%3E%3Ctext x='16' y='22' font-family='Arial' font-size='16' font-weight='bold' text-anchor='middle' fill='%231E1E1E'%3EN%3C/text%3E%3C/svg%3E">
+</head>
+<body class="login-page">
+  <a href="#login-form" class="skip-link">Saltar al formulario principal</a>
+
+  <main class="login-shell" role="main">
+    <!-- ===== Left: Formulario ===== -->
+    <section class="login-left" id="login-left">
+      <div class="login-logo" aria-label="INNOVATION NFC E.S.F">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <rect x="2" y="4" width="20" height="16" rx="2"/>
+          <path d="M6 8h12M6 12h12M6 16h8"/>
+        </svg>
+        <span>INNOVATION NFC E.S.F.</span>
+      </div>
+
+      <div class="login-center">
+        <div class="login-card">
+          <header class="login-header">
+            <span class="login-kicker">Plataforma de control</span>
+            <h1 class="login-title">Iniciar sesión</h1>
+            <p class="login-subtitle">Personal, horarios y accesos NFC en un solo lugar.</p>
+          </header>
+
+          <!-- Alert container -->
+          <div id="login-alert" aria-live="polite"></div>
+
+          <form id="login-form" class="login-form" novalidate>
+            <div class="form-group">
+              <label for="usuario" class="form-label">Usuario</label>
+              <div class="login-input-wrap">
+                <svg class="login-input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+                  <circle cx="12" cy="8" r="4"/>
+                  <path d="M4 21a8 8 0 0 1 16 0"/>
+                </svg>
+                <input
+                  type="text"
+                  id="usuario"
+                  name="usuario"
+                  class="form-input"
+                  placeholder="Ingrese su usuario"
+                  autocomplete="username"
+                  required
+                >
+              </div>
+              <div class="form-error" id="usuario-error" aria-live="polite"></div>
+            </div>
+
+            <div class="form-group">
+              <label for="email" class="form-label">Email</label>
+              <div class="login-input-wrap">
+                <svg class="login-input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+                  <rect x="3" y="5" width="18" height="14" rx="2"/>
+                  <path d="m3 7 9 6 9-6"/>
+                </svg>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  class="form-input"
+                  placeholder="correo@empresa.com"
+                  autocomplete="email"
+                  autocapitalize="off"
+                  required
+                >
+              </div>
+              <div class="form-error" id="email-error" aria-live="polite"></div>
+            </div>
+
+            <div class="form-group">
+              <label for="password" class="form-label">Contraseña</label>
+              <div class="login-input-wrap">
+                <svg class="login-input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+                  <rect x="4" y="10" width="16" height="11" rx="2"/>
+                  <path d="M8 10V7a4 4 0 0 1 8 0v3"/>
+                </svg>
+                <input
+                  type="password"
+                  id="password"
+                  name="password"
+                  class="form-input"
+                  placeholder="••••••••"
+                  autocomplete="current-password"
+                  required
+                >
+                <button
+                  type="button"
+                  id="toggle-password"
+                  class="input-toggle"
+                  aria-label="Mostrar contraseña"
+                  aria-pressed="false"
+                >
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="18" height="18" aria-hidden="true">
+                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                    <circle cx="12" cy="12" r="3"/>
+                  </svg>
+                </button>
+              </div>
+              <div class="form-error" id="password-error" aria-live="polite"></div>
+            </div>
+
+            <button type="submit" id="login-submit" class="login-submit">
+              <span>Iniciar sesión</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <line x1="5" y1="12" x2="19" y2="12"/>
+                <polyline points="12 5 19 12 12 19"/>
+              </svg>
+            </button>
+            <p class="login-security">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+              </svg>
+              Acceso seguro · Sesión protegida
+            </p>
+          </form>
+
+          <div class="login-divider"><span>o explora las herramientas</span></div>
+
+          <div class="login-social">
+            <a href="areas.html" class="login-social-btn" aria-label="Áreas de acceso">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+                <rect x="3" y="3" width="7" height="7" rx="1"/>
+                <rect x="14" y="3" width="7" height="7" rx="1"/>
+                <rect x="3" y="14" width="7" height="7" rx="1"/>
+                <rect x="14" y="14" width="7" height="7" rx="1"/>
+              </svg>
+              <span>Áreas de acceso</span>
+            </a>
+            <a href="asistencia.html" class="login-social-btn" aria-label="Asistencia">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+                <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                <circle cx="8.5" cy="7" r="4"/>
+                <path d="M20 21v-2a4 4 0 0 0-3-3.87"/>
+                <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+              </svg>
+              <span>Asistencia</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <footer class="login-foot">
+        <button type="button" class="login-foot-btn" id="support-btn" aria-label="Contactar a soporte" aria-haspopup="dialog">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <circle cx="12" cy="12" r="10"/>
+            <path d="M12 16v-4M12 8h.01"/>
+          </svg>
+          <span>Contactar a soporte</span>
+        </button>
+        <button type="button" class="login-foot-btn" id="credits-btn" aria-label="Créditos del proyecto" aria-haspopup="dialog">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/>
+            <path d="M12 6v6l4 2"/>
+          </svg>
+          <span>Créditos del proyecto</span>
+        </button>
+      </footer>
+    </section>
+
+    <!-- ===== Right: Visual NFC futurista (100% CSS, sin imagen externa) ===== -->
+    <section class="login-right" aria-hidden="true">
+      <div class="login-visual-grid"></div>
+      <div class="login-visual-glow login-visual-glow-gold"></div>
+      <div class="login-visual-glow login-visual-glow-green"></div>
+      <div class="login-visual-orbit"><span>NFC</span></div>
+      <div class="login-visual-status"><span class="login-status-dot"></span> Sistema activo</div>
+
+      <div class="visual-content">
+        <!-- Tarjeta amarilla: Próximo turno (solo la hora) -->
+        <div class="float-card task-card" id="card-task">
+          <div class="task-card-title">Próximo turno</div>
+          <div class="task-card-time" id="task-time">07:00 AM</div>
+        </div>
+
+        <!-- Tarjeta marrón: solo días laborables (compacta) -->
+        <div class="float-card dark-card" id="card-workdays">
+          <div class="dark-card-title">Días laborables</div>
+          <div class="dark-card-shift" id="workdays">Lunes a sábado</div>
+        </div>
+
+        <!-- Calendario semanal: Lunes a Domingo (español) -->
+        <div class="week-strip" id="week-strip" aria-label="Calendario de la semana">
+          <!-- Se genera por JS -->
+        </div>
+
+        <!-- Tarjeta blanca: Curso Big Data 2026-2 -->
+        <div class="float-card meeting-card" id="card-project">
+          <div class="meeting-card-title">Curso Big Data 2026-2</div>
+          <div class="meeting-card-time" id="project-desc">INNOVATION NFC E.S.F.</div>
+          <div class="meeting-card-avatars" id="project-avatars"></div>
+        </div>
+
+        <div class="login-visual-caption">
+          <span class="visual-caption-kicker">INNOVATION NFC</span>
+          <strong>Control de personal<br>en tiempo real.</strong>
+          <small>Asistencia, accesos y equipos conectados.</small>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Modales: OCULTOS por defecto (hidden + .oculto). Solo el JS los abre. -->
+  <div class="modal-overlay oculto" id="modal-support" role="dialog" aria-modal="true" aria-labelledby="modal-support-title" aria-hidden="true" hidden>
+    <div class="modal-card login-modal">
+      <div class="modal-header">
+        <div>
+          <span class="modal-eyebrow">Soporte</span>
+          <h2 id="modal-support-title">Contactar a Soporte</h2>
+        </div>
+        <button type="button" class="modal-close" aria-label="Cerrar">✕</button>
+      </div>
+      <div class="modal-body">
+        <p style="color:var(--color-text-secondary);margin-bottom:16px;">¿Necesitas ayuda? Completa el formulario y te responderemos pronto.</p>
+        <form id="support-form" class="modal-form">
+          <div class="form-group">
+            <label for="support-name" class="form-label">Tu nombre</label>
+            <input type="text" id="support-name" class="form-input" placeholder="Nombre y apellido" required>
+          </div>
+          <div class="form-group">
+            <label for="support-email" class="form-label">Tu email</label>
+            <input type="email" id="support-email" class="form-input" placeholder="tu@email.com" required>
+          </div>
+          <div class="form-group">
+            <label for="support-subject" class="form-label">Asunto</label>
+            <input type="text" id="support-subject" class="form-input" placeholder="¿En qué podemos ayudarte?" required>
+          </div>
+          <div class="form-group">
+            <label for="support-message" class="form-label">Mensaje</label>
+            <textarea id="support-message" class="form-input" rows="4" placeholder="Describe tu problema..." required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary btn-block">Enviar ticket</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-overlay oculto" id="modal-credits" role="dialog" aria-modal="true" aria-labelledby="modal-credits-title" aria-hidden="true" hidden>
+    <div class="modal-card login-modal">
+      <div class="modal-header">
+        <div>
+          <span class="modal-eyebrow">Proyecto</span>
+          <h2 id="modal-credits-title">Créditos del Proyecto</h2>
+        </div>
+        <button type="button" class="modal-close" aria-label="Cerrar">✕</button>
+      </div>
+      <div class="modal-body">
+        <div class="credits-content">
+          <h3 style="margin-bottom:12px;color:var(--color-text-primary);">INNOVATION NFC E.S.F.</h3>
+          <p style="color:var(--color-text-secondary);margin-bottom:16px;font-size:0.9rem;">Sistema de Control de Personal y Accesos con Tecnología NFC</p>
+          <div class="credits-grid">
+            <div class="credit-item">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--color-accent-500);"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="M12 6v6l4 2"/></svg>
+              <span>Desarrollo: Equipo INNOVATION NFC</span>
+            </div>
+            <div class="credit-item">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--color-accent-500);"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+              <span>Frontend: HTML5, CSS3, JavaScript ES6+</span>
+            </div>
+            <div class="credit-item">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--color-accent-500);"><path d="M4 7V4h16v3"/><path d="M9 20h6"/><path d="M12 4v16"/></svg>
+              <span>Backend: Cloudflare Workers + KV</span>
+            </div>
+            <div class="credit-item">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--color-accent-500);"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+              <span>Tecnología NFC: Web NFC API</span>
+            </div>
+          </div>
+          <p style="margin-top:20px;padding-top:16px;border-top:1px solid var(--color-border-light);font-size:0.8rem;color:var(--color-text-tertiary);text-align:center;">Versión 1.0.0 — 2026</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/theme.js" defer></script>
+  <script src="js/nfc-reader.js" defer></script>
+  <script src="js/session.js" defer></script>
+  <script src="js/login.js" defer></script>
+</body>
+</html>

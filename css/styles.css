@@ -1,0 +1,19 @@
+/* ========================================
+   Main Stylesheet - Importa todos los módulos
+   HR Management Dashboard
+   ======================================== */
+
+/* 1. Variables & Design Tokens */
+@import './variables.css';
+
+/* 2. Reset & Base */
+@import './reset.css';
+
+/* 3. Componentes Compartidos */
+@import './components.css';
+
+/* 4. Páginas Específicas */
+@import './login.css?v=20261102-login';
+@import './dashboard.css';
+/* 5. Tema global carbón */
+@import './theme-carbon.css';

@@ -1,0 +1,688 @@
+/* ============================================================
+   TEMA GLOBAL CARBÓN — INNOVATION NFC E.S.F
+   Se activa con html[data-tema="carbon"]
+   ============================================================ */
+
+html[data-tema="carbon"] {
+  --color-bg-primary: #171513;
+  --color-bg-secondary: #211E1A;
+  --color-bg-tertiary: #2A2620;
+  --color-bg-hover: rgba(255, 255, 255, 0.055);
+  --color-bg-active: rgba(255, 255, 255, 0.09);
+
+  --color-text-primary: #F7F2E8;
+  --color-text-secondary: rgba(247, 242, 232, 0.64);
+  --color-text-tertiary: rgba(247, 242, 232, 0.38);
+  --color-text-inverse: #171513;
+
+  --color-border-light: rgba(245, 210, 90, 0.14);
+  --color-border-medium: rgba(245, 210, 90, 0.23);
+  --color-border-dark: rgba(245, 210, 90, 0.34);
+
+  --color-cream-50: #1B1815;
+  --color-cream-100: #1F1C18;
+  --color-cream-200: #191613;
+  --color-cream-300: #221F1A;
+  --color-cream-400: #2A2620;
+  --color-cream-500: #302B24;
+
+  --color-accent-100: #3A3217;
+  --color-accent-200: #4A3D17;
+  --color-success-100: #243024;
+  --color-warning-100: #322B1C;
+  --color-danger-100: #35221D;
+
+  --color-shadow-sm: rgba(0, 0, 0, 0.24);
+  --color-shadow-md: rgba(0, 0, 0, 0.32);
+  --color-shadow-lg: rgba(0, 0, 0, 0.42);
+  --color-shadow-xl: rgba(0, 0, 0, 0.55);
+  --color-white: #FFFFFF;
+}
+
+html[data-tema="carbon"] body,
+html[data-tema="carbon"] .app-page {
+  background:
+    radial-gradient(1200px 600px at 88% -8%, rgba(245, 210, 90, 0.12), transparent 58%),
+    radial-gradient(900px 700px at 4% 100%, rgba(47, 107, 79, 0.12), transparent 62%),
+    var(--color-bg-primary);
+  color: var(--color-text-primary);
+}
+
+/* ===== Sidebar ===== */
+html[data-tema="carbon"] .app-sidebar {
+  background: rgba(23, 21, 18, 0.96);
+  border-right-color: var(--color-border-light);
+}
+
+html[data-tema="carbon"] .brand-text strong,
+html[data-tema="carbon"] .sidebar-period strong,
+html[data-tema="carbon"] .sidebar-link,
+html[data-tema="carbon"] .sidebar-user-text strong {
+  color: var(--color-text-primary);
+}
+
+html[data-tema="carbon"] .brand-text span,
+html[data-tema="carbon"] .sidebar-period span:last-child,
+html[data-tema="carbon"] .sidebar-user-text span {
+  color: var(--color-text-secondary);
+}
+
+html[data-tema="carbon"] .sidebar-period {
+  border-color: rgba(245, 210, 90, 0.3);
+  background: linear-gradient(135deg, rgba(245, 210, 90, 0.1), rgba(255, 255, 255, 0.025));
+}
+
+html[data-tema="carbon"] .sidebar-link:hover {
+  background: var(--color-bg-hover);
+  color: var(--color-text-primary);
+}
+
+html[data-tema="carbon"] .sidebar-link.active {
+  background: var(--color-accent-500);
+  color: #1E1E1E;
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.24);
+}
+
+html[data-tema="carbon"] .sidebar-link.active svg {
+  color: #1E1E1E;
+}
+
+html[data-tema="carbon"] .sidebar-logout {
+  color: var(--color-text-secondary);
+  border-color: var(--color-border-light);
+}
+
+/* ===== Topbar ===== */
+html[data-tema="carbon"] .app-topbar {
+  background: rgba(23, 21, 18, 0.9);
+  border-bottom-color: var(--color-border-light);
+}
+
+html[data-tema="carbon"] .topbar-search,
+html[data-tema="carbon"] .icon-btn,
+html[data-tema="carbon"] .user-menu-btn,
+html[data-tema="carbon"] .notification-panel,
+html[data-tema="carbon"] .user-dropdown {
+  background: #211E1A;
+  border-color: var(--color-border-light);
+  color: var(--color-text-primary);
+}
+
+html[data-tema="carbon"] .topbar-search input {
+  color: var(--color-text-primary);
+}
+
+html[data-tema="carbon"] .topbar-search svg,
+html[data-tema="carbon"] .topbar-clock,
+html[data-tema="carbon"] .user-menu-text small {
+  color: var(--color-text-secondary);
+}
+
+html[data-tema="carbon"] .user-menu-text strong,
+html[data-tema="carbon"] .dropdown-user strong,
+html[data-tema="carbon"] .notification-item strong {
+  color: var(--color-text-primary);
+}
+
+html[data-tema="carbon"] .dropdown-item:hover,
+html[data-tema="carbon"] .notification-item:hover,
+html[data-tema="carbon"] .user-menu-btn:hover {
+  background: var(--color-bg-hover);
+}
+
+html[data-tema="carbon"] .app-footer {
+  background: #141210;
+  border-top-color: var(--color-border-light);
+  color: var(--color-text-secondary);
+}
+
+/* ===== Cabeceras y texto principal ===== */
+html[data-tema="carbon"] .page-title,
+html[data-tema="carbon"] .section-head h2,
+html[data-tema="carbon"] .chart-header h3,
+html[data-tema="carbon"] .panel-card-head h3,
+html[data-tema="carbon"] .kpi-value,
+html[data-tema="carbon"] .data-table td,
+html[data-tema="carbon"] .perfil-panel-head h3,
+html[data-tema="carbon"] .perfil-mini strong,
+html[data-tema="carbon"] .reportes-side-head h3,
+html[data-tema="carbon"] .reportes-widget-info strong,
+html[data-tema="carbon"] .reportes-selected-info strong,
+html[data-tema="carbon"] .configuracion-card h2,
+html[data-tema="carbon"] .configuracion-card h3 {
+  color: var(--color-text-primary);
+}
+
+html[data-tema="carbon"] .page-desc,
+html[data-tema="carbon"] .chart-subtitle,
+html[data-tema="carbon"] .kpi-label,
+html[data-tema="carbon"] .kpi-detail,
+html[data-tema="carbon"] .data-table th,
+html[data-tema="carbon"] .data-table small {
+  color: var(--color-text-secondary);
+}
+
+/* ===== Tarjetas y contenedores ===== */
+html[data-tema="carbon"] .kpi-card,
+html[data-tema="carbon"] .chart-card,
+html[data-tema="carbon"] .panel-card,
+html[data-tema="carbon"] .filters-bar,
+html[data-tema="carbon"] .table-wrap,
+html[data-tema="carbon"] .vencimiento-card,
+html[data-tema="carbon"] .perfil-panel,
+html[data-tema="carbon"] .perfil-mini,
+html[data-tema="carbon"] .perfiles-selector-card,
+html[data-tema="carbon"] .reportes-meta-card,
+html[data-tema="carbon"] .reportes-side,
+html[data-tema="carbon"] .reportes-widget-card,
+html[data-tema="carbon"] .reportes-selected,
+html[data-tema="carbon"] .cumple-list-card,
+html[data-tema="carbon"] .configuracion-card,
+html[data-tema="carbon"] .empty-state,
+html[data-tema="carbon"] .module-placeholder,
+html[data-tema="carbon"] .preview-block,
+html[data-tema="carbon"] .drawer,
+html[data-tema="carbon"] .modal-card {
+  background: #211E1A;
+  border-color: var(--color-border-light);
+  color: var(--color-text-primary);
+}
+
+html[data-tema="carbon"] .kpi-card.kpi-success {
+  background: linear-gradient(145deg, rgba(111, 169, 111, 0.13), #211E1A);
+}
+
+html[data-tema="carbon"] .kpi-card.kpi-warning {
+  background: linear-gradient(145deg, rgba(209, 158, 51, 0.14), #211E1A);
+}
+
+html[data-tema="carbon"] .kpi-card.kpi-danger {
+  background: linear-gradient(145deg, rgba(196, 95, 63, 0.13), #211E1A);
+}
+
+html[data-tema="carbon"] .kpi-card.kpi-accent {
+  background: linear-gradient(145deg, rgba(245, 210, 90, 0.11), #211E1A);
+}
+
+html[data-tema="carbon"] .panel-week,
+html[data-tema="carbon"] .week-numbers > div,
+html[data-tema="carbon"] .week-day,
+html[data-tema="carbon"] .mark-list li,
+html[data-tema="carbon"] .meeting-list li,
+html[data-tema="carbon"] .contract-list li,
+html[data-tema="carbon"] .perfil-data-row,
+html[data-tema="carbon"] .perfil-note,
+html[data-tema="carbon"] .perfil-doc-card,
+html[data-tema="carbon"] .justificacion-item,
+html[data-tema="carbon"] .archivo-preview,
+html[data-tema="carbon"] .just-context-card,
+html[data-tema="carbon"] .cumple-lista li,
+html[data-tema="carbon"] .reportes-widget-icon,
+html[data-tema="carbon"] .reportes-order-actions button,
+html[data-tema="carbon"] .filter-input,
+html[data-tema="carbon"] .filter-select,
+html[data-tema="carbon"] .form-input,
+html[data-tema="carbon"] .config-item {
+  background: #2A2620;
+  border-color: var(--color-border-light);
+  color: var(--color-text-primary);
+}
+
+html[data-tema="carbon"] .data-table th {
+  background: #1B1815;
+}
+
+html[data-tema="carbon"] .data-table tbody tr:hover {
+  background: var(--color-bg-hover);
+}
+
+html[data-tema="carbon"] .data-table td {
+  border-bottom-color: var(--color-border-light);
+}
+
+/* ===== Controles ===== */
+html[data-tema="carbon"] .form-input,
+html[data-tema="carbon"] .filter-input,
+html[data-tema="carbon"] .filter-select,
+html[data-tema="carbon"] textarea,
+html[data-tema="carbon"] select {
+  background: #2A2620;
+  border-color: var(--color-border-light);
+  color: var(--color-text-primary);
+}
+
+html[data-tema="carbon"] .form-input:focus,
+html[data-tema="carbon"] .filter-input:focus,
+html[data-tema="carbon"] .filter-select:focus {
+  border-color: var(--color-accent-500);
+  box-shadow: 0 0 0 3px rgba(245, 210, 90, 0.16);
+}
+
+html[data-tema="carbon"] .btn-primary {
+  background: var(--color-accent-500);
+  color: #1E1E1E;
+  border-color: var(--color-accent-500);
+}
+
+html[data-tema="carbon"] .btn-primary:hover:not(:disabled) {
+  background: var(--color-accent-400);
+  border-color: var(--color-accent-400);
+}
+
+html[data-tema="carbon"] .btn-secondary {
+  background: #2A2620;
+  color: var(--color-text-primary);
+  border-color: var(--color-border-medium);
+}
+
+html[data-tema="carbon"] .btn-ghost {
+  color: var(--color-text-secondary);
+}
+
+html[data-tema="carbon"] .btn-ghost:hover:not(:disabled) {
+  background: var(--color-bg-hover);
+  color: var(--color-text-primary);
+}
+
+html[data-tema="carbon"] .icon-btn {
+  background: #211E1A;
+  border-color: var(--color-border-light);
+  color: var(--color-text-secondary);
+}
+
+/* ===== Tabs, badges y estados ===== */
+html[data-tema="carbon"] .perfil-tabs {
+  background: #211E1A;
+  border-color: var(--color-border-light);
+}
+
+html[data-tema="carbon"] .perfil-tab {
+  color: var(--color-text-secondary);
+}
+
+html[data-tema="carbon"] .perfil-tab:hover {
+  background: var(--color-bg-hover);
+  color: var(--color-text-primary);
+}
+
+html[data-tema="carbon"] .perfil-tab.is-active {
+  background: var(--color-accent-500);
+  color: #1E1E1E;
+}
+
+html[data-tema="carbon"] .badge-neutral {
+  background: #2A2620;
+  color: var(--color-text-secondary);
+}
+
+/* ===== Modales y drawer ===== */
+html[data-tema="carbon"] .modal-header {
+  border-bottom-color: var(--color-border-light);
+}
+
+html[data-tema="carbon"] .modal-body {
+  background: #211E1A;
+}
+
+html[data-tema="carbon"] .modal-card {
+  background: #211E1A;
+  border-color: var(--color-border-light);
+}
+
+html[data-tema="carbon"] .drawer-header,
+html[data-tema="carbon"] .drawer-table td {
+  border-bottom-color: var(--color-border-light);
+}
+
+html[data-tema="carbon"] .drawer-profile,
+html[data-tema="carbon"] .drawer-stats .stat {
+  border-color: var(--color-border-light);
+  background: #2A2620;
+}
+
+html[data-tema="carbon"] .drawer-table th {
+  color: var(--color-text-secondary);
+}
+
+/* ===== Login ===== */
+html[data-tema="carbon"] .login-page {
+  background:
+    radial-gradient(circle at 12% 8%, rgba(245, 210, 90, 0.13), transparent 32%),
+    radial-gradient(circle at 88% 92%, rgba(47, 107, 79, 0.14), transparent 38%),
+    #141210;
+}
+
+html[data-tema="carbon"] .login-shell {
+  background: linear-gradient(150deg, #1B1815, #221F1A 58%, #191613);
+  border-color: rgba(245, 210, 90, 0.14);
+}
+
+html[data-tema="carbon"] .login-card {
+  background: rgba(33, 30, 26, 0.9);
+  border-color: var(--color-border-light);
+}
+
+html[data-tema="carbon"] .login-kicker {
+  color: var(--color-accent-500);
+}
+
+html[data-tema="carbon"] .login-title,
+html[data-tema="carbon"] .login-input-wrap .form-input,
+html[data-tema="carbon"] .login-social-btn {
+  color: var(--color-text-primary);
+}
+
+html[data-tema="carbon"] .login-subtitle,
+html[data-tema="carbon"] .login-footer,
+html[data-tema="carbon"] .login-security {
+  color: var(--color-text-secondary);
+}
+
+html[data-tema="carbon"] .login-input-wrap .form-input {
+  background: #2A2620;
+  border-color: var(--color-border-light);
+}
+
+html[data-tema="carbon"] .login-social-btn {
+  background: #2A2620;
+  border-color: var(--color-border-light);
+}
+
+html[data-tema="carbon"] .login-logo {
+  background: #0F0E0D;
+  border-color: rgba(245, 210, 90, 0.2);
+}
+
+html[data-tema="carbon"] .login-divider::before,
+html[data-tema="carbon"] .login-divider::after {
+  background: var(--color-border-light);
+}
+
+/* ===== Reportes: builder. La diapositiva usa su propio tema ===== */
+html[data-tema="carbon"] .reportes-cat-pills .reportes-pill {
+  background: #2A2620;
+  border-color: var(--color-border-light);
+  color: var(--color-text-secondary);
+}
+
+html[data-tema="carbon"] .reportes-cat-pills .reportes-pill.is-active {
+  background: var(--color-accent-500);
+  border-color: var(--color-accent-500);
+  color: #1E1E1E;
+}
+
+html[data-tema="carbon"] .reportes-widget-card.is-selected {
+  border-color: rgba(245, 210, 90, 0.35);
+  background: rgba(245, 210, 90, 0.09);
+}
+
+html[data-tema="carbon"] .reportes-widget-info strong,
+html[data-tema="carbon"] .reportes-selected-info strong,
+html[data-tema="carbon"] .reportes-side-head h3 {
+  color: var(--color-text-primary);
+}
+
+html[data-tema="carbon"] .reportes-widget-info small,
+html[data-tema="carbon"] .reportes-selected-info small {
+  color: var(--color-text-tertiary);
+}
+
+/* ===== Configuración ===== */
+html[data-tema="carbon"] .configuracion-card {
+  background: #211E1A;
+  border-color: var(--color-border-light);
+}
+
+html[data-tema="carbon"] .config-info-grid .config-item {
+  background: #2A2620;
+}
+
+html[data-tema="carbon"] .config-theme-card {
+  background: #2A2620;
+  border-color: var(--color-border-light);
+  color: var(--color-text-primary);
+}
+
+html[data-tema="carbon"] .config-theme-card.is-active {
+  border-color: var(--color-accent-500);
+  box-shadow: 0 0 0 2px rgba(245, 210, 90, 0.16);
+}
+
+/* ===== Reportes: lista de seleccionados ===== */
+html[data-tema="carbon"] .reportes-selected-list li {
+  background: #2A2620;
+  border-color: var(--color-border-light);
+}
+
+html[data-tema="carbon"] .reportes-order {
+  background: var(--color-accent-500);
+  color: #1E1E1E;
+}
+
+html[data-tema="carbon"] .reportes-order-actions button {
+  background: #211E1A;
+  border-color: var(--color-border-light);
+  color: var(--color-text-primary);
+}
+
+html[data-tema="carbon"] .reportes-order-actions button:hover:not(:disabled) {
+  background: rgba(245, 210, 90, 0.12);
+  border-color: rgba(245, 210, 90, 0.35);
+  color: var(--color-accent-500);
+}
+
+html[data-tema="carbon"] .reportes-order-actions button:disabled {
+  opacity: 0.35;
+}
+
+html[data-tema="carbon"] .reportes-selected-head span {
+  background: rgba(245, 210, 90, 0.14);
+  color: var(--color-accent-500);
+}
+
+/* ===== Estados y vacíos ===== */
+html[data-tema="carbon"] .badge-accent {
+  background: rgba(245, 210, 90, 0.14);
+  color: var(--color-accent-500);
+}
+
+html[data-tema="carbon"] .badge-justified {
+  background: rgba(111, 169, 111, 0.16);
+  color: #8FBF8F;
+}
+
+html[data-tema="carbon"] #perfil-ficha-wrap .empty-state {
+  background: #211E1A;
+  border-color: var(--color-border-light);
+  color: var(--color-text-secondary);
+}
+
+html[data-tema="carbon"] .empty-state h3 {
+  color: var(--color-text-primary);
+}
+
+/* ===== Login: tarjeta de proyecto ===== */
+html[data-tema="carbon"] .meeting-card {
+  background: #211E1A;
+  border: 1px solid var(--color-border-light);
+  color: var(--color-text-primary);
+}
+
+html[data-tema="carbon"] .meeting-card-title {
+  color: var(--color-text-primary);
+}
+
+html[data-tema="carbon"] .meeting-card-time {
+  color: var(--color-text-secondary);
+}
+
+html[data-tema="carbon"] .meeting-card-avatars .avatar {
+  border-color: #211E1A;
+}
+
+html[data-tema="carbon"] .login-social-btn:hover {
+  background: #2A2620;
+  border-color: var(--color-border-medium);
+}
+
+/* ===== Calendario ===== */
+html[data-tema="carbon"] .calendario-card,
+html[data-tema="carbon"] .calendario-side {
+  background: #211E1A;
+  border-color: var(--color-border-light);
+}
+
+html[data-tema="carbon"] .calendario-nav-btn {
+  background: #2A2620;
+  border-color: var(--color-border-light);
+  color: var(--color-text-primary);
+}
+
+html[data-tema="carbon"] .calendario-nav-btn:hover {
+  background: #302B24;
+  border-color: var(--color-border-medium);
+}
+
+html[data-tema="carbon"] .calendario-role-option {
+  background: #2A2620;
+  border-color: var(--color-border-light);
+  color: var(--color-text-primary);
+}
+
+html[data-tema="carbon"] .calendario-role-option:has(input:checked) {
+  background: rgba(245, 210, 90, 0.13);
+  border-color: rgba(245, 210, 90, 0.42);
+}
+
+html[data-tema="carbon"] .calendario-form .calendario-modal-actions {
+  background: #211E1A;
+  border-top-color: var(--color-border-light);
+}
+
+html[data-tema="carbon"] .calendario-dia {
+  border-color: var(--color-border-light);
+}
+
+html[data-tema="carbon"] .calendario-dia:hover {
+  background: #2A2620;
+}
+
+html[data-tema="carbon"] .calendario-dia.is-fuera {
+  background: transparent;
+}
+
+html[data-tema="carbon"] .calendario-agenda-item,
+html[data-tema="carbon"] .calendario-dia-evento,
+html[data-tema="carbon"] .calendario-detalle-hero,
+html[data-tema="carbon"] .calendario-note {
+  border-color: var(--color-border-light);
+}
+
+html[data-tema="carbon"] .calendario-agenda-fecha,
+html[data-tema="carbon"] .calendario-detalle-fecha {
+  background: #12100E;
+}
+
+html[data-tema="carbon"] .calendario-side {
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.22);
+}
+
+html[data-tema="carbon"] .calendario-btn-danger {
+  color: var(--color-danger-500);
+  border-color: rgba(217, 119, 87, 0.35);
+}
+
+html[data-tema="carbon"] .calendario-btn-danger:hover:not(:disabled) {
+  background: rgba(196, 95, 63, 0.14);
+  border-color: rgba(217, 119, 87, 0.55);
+  color: var(--color-danger-500);
+}
+
+/* ===== Tickets ===== */
+html[data-tema="carbon"] .btn.ticket-btn-success {
+  color: var(--color-success-500);
+  border-color: rgba(143, 191, 143, 0.3);
+}
+
+html[data-tema="carbon"] .btn.ticket-btn-success:hover:not(:disabled) {
+  background: rgba(111, 169, 111, 0.14);
+  border-color: rgba(143, 191, 143, 0.5);
+  color: var(--color-success-500);
+}
+
+html[data-tema="carbon"] .ticket-form .ticket-modal-actions {
+  background: #211E1A;
+  border-top-color: var(--color-border-light);
+}
+
+/* ===== Tarjetas NFC ===== */
+html[data-tema="carbon"] .tarjeta-zona-option {
+  background: #2A2620;
+  border-color: var(--color-border-light);
+  color: var(--color-text-primary);
+}
+
+html[data-tema="carbon"] .tarjeta-zona-option:has(input:checked) {
+  background: rgba(245, 210, 90, 0.13);
+  border-color: rgba(245, 210, 90, 0.42);
+}
+
+html[data-tema="carbon"] .btn.tarjeta-btn-danger {
+  color: var(--color-danger-500);
+  border-color: rgba(217, 119, 87, 0.35);
+}
+
+html[data-tema="carbon"] .btn.tarjeta-btn-danger:hover:not(:disabled) {
+  background: rgba(196, 95, 63, 0.14);
+  border-color: rgba(217, 119, 87, 0.55);
+  color: var(--color-danger-500);
+}
+
+html[data-tema="carbon"] .btn.tarjeta-btn-success {
+  color: var(--color-success-500);
+  border-color: rgba(143, 191, 143, 0.3);
+}
+
+html[data-tema="carbon"] .btn.tarjeta-btn-success:hover:not(:disabled) {
+  background: rgba(111, 169, 111, 0.14);
+  border-color: rgba(143, 191, 143, 0.5);
+  color: var(--color-success-500);
+}
+
+html[data-tema="carbon"] .tarjeta-form .tarjeta-modal-actions {
+  background: #211E1A;
+  border-top-color: var(--color-border-light);
+}
+
+/* ===== Configuración: formularios ===== */
+html[data-tema="carbon"] .config-form .form-input {
+  background: #2A2620;
+  border-color: var(--color-border-light);
+  color: var(--color-text-primary);
+}
+
+html[data-tema="carbon"] .config-toggle {
+  background: #2A2620;
+  border-color: var(--color-border-light);
+}
+
+html[data-tema="carbon"] .config-toggle-track {
+  background: #211E1A;
+  border-color: var(--color-border-medium);
+}
+
+html[data-tema="carbon"] .config-toggle input:checked + .config-toggle-track {
+  background: var(--color-accent-500);
+  border-color: var(--color-accent-500);
+}
+
+html[data-tema="carbon"] .config-logout {
+  color: var(--color-danger-500);
+  border-color: rgba(217, 119, 87, 0.3);
+}
+
+html[data-tema="carbon"] .config-logout:hover:not(:disabled) {
+  background: rgba(196, 95, 63, 0.12);
+  border-color: rgba(217, 119, 87, 0.5);
+  color: var(--color-danger-500);
+}
