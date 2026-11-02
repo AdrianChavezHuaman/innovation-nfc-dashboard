@@ -45,12 +45,12 @@
 
   const EMPLEADOS_SEED = [
     // ============================================================
-    // A. 7 TRABAJADORES REALES (KV uni_empleados) — ESQUEMA PRINCIPAL
+    // A. 7 CUENTAS HABILITADAS (base original) — ESQUEMA PRINCIPAL
     // Adrian Chavez = DUEÑO | Los otros 6 = compañeros de curso
     // Roles reasignados para Dashboard Gerencia/RRHH:
     //   3 Gerencia (jefe): Jerson, Anthony, Amat
     //   3 RRHH (rrhh): Zinadyn, Joaquin, Axel
-    // rolNFC = rol original del KV (para control de acceso NFC físico)
+    // rolNFC = rol original de la base (para control de acceso NFC físico)
     // ============================================================
     { id: 'EMP001', nombre: 'Andre Chavez Huaman', usuario: 'achavezh', email: 'achavezh@innovation.nfc.esf', password: 'huaman123', area: 'Direccion', rol: 'dueno', rolNFC: 'dueno', departamento: 'Gerencia', puesto: 'Dueno', serie: 'SERIE-001', uidNFC: '04A1B2C3', esReal: true },
     { id: 'EMP002', nombre: 'Jerson Alarcon Riquelme', usuario: 'jalarconr', email: 'jalarconr@innovation.nfc.esf', password: 'riquelme123', area: 'Gerencia', rol: 'jefe', rolNFC: 'jefe', departamento: 'Gerencia', puesto: 'Gerente General', serie: 'SERIE-002', uidNFC: '04B2C3D4', esReal: true },
@@ -117,7 +117,7 @@
   ];
 
   const ZONAS_SEED = [
-    // Exactamente del KV uni_zonas (ids = keys originales)
+    // Zonas de la base original (ids = claves originales)
     { id: 'almacen', nombre: 'Almacén', icono: '📦', rolesPermitidos: ['dueno', 'jefe', 'almacen'], descripcion: 'Almacén general y logística' },
     { id: 'comedor', nombre: 'Comedor', icono: '🍽️', rolesPermitidos: ['todos'], descripcion: 'Acceso al comedor para almuerzo' },
     { id: 'cuarto_limpieza', nombre: 'Cuarto de Limpieza', icono: '🧹', rolesPermitidos: ['dueno', 'jefe', 'limpieza', 'admin_limpieza'], descripcion: 'Depósito de materiales de limpieza' },
@@ -402,7 +402,7 @@
     // Empleados simulados solo acceden a zonas con 'todos' (comedor, salas_comunes)
     if (rol === 'simulado') return roles.includes('todos');
     
-    // Roles reales: acceso según KV original
+    // Roles habilitados: acceso según la base original
     return roles.includes('todos') || roles.includes(rol);
   }
 
